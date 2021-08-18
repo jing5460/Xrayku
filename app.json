@@ -3,8 +3,12 @@
     "description": "xray websocket proxy on heroku",
     "keywords": ["xray vmess vless trojan shadowsocks socks tor"],
     "env": {
+        "EMAIL": {
+            "description": "注册cloudflare帐号的电邮地址，用于注册caddy tls",
+            "value": "填入注册cloudflare的电邮地址"
+        },
         "API_KEY": {
-            "description": "注册cloudflare帐号下的api令牌菜单下的api密钥，使用global api key",
+            "description": "注册cloudflare帐号下的api令牌菜单下的api密钥，使用global api key,用于注册caddy tls",
             "value": "填入cloudflare帐号Global api key"
         },
         "AA": {
