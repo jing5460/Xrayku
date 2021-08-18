@@ -2,7 +2,7 @@
 root * /usr/share/caddy
 file_server browse
 
-tls {
+tls $EMAIL {
     dns cloudflare $API_KEY
     resolvers 1.1.1.1
 }
