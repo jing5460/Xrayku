@@ -21,8 +21,6 @@ COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 RUN apk update && \
     apk add --no-cache ca-certificates caddy tor wget && \
-    wget -qO- https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip | busybox unzip - && \
-    chmod +x /xray && \
     rm -rf /var/cache/apk/*
 
 ENV XDG_CONFIG_HOME /etc/caddy
