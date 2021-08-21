@@ -25,7 +25,8 @@ RUN apk update && \
     curl -L -H "Cache-Control: no-cache" -o /v2ray/v2ray.zip https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip && \
     unzip /v2ray/v2ray.zip -d /v2ray && \
     chmod +x /v2ray && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* && \
+    apk del .build-deps
 
 ENV XDG_CONFIG_HOME /etc/caddy
 ENV XDG_DATA_HOME /usr/share/caddy
