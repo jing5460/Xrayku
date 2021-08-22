@@ -20,7 +20,7 @@ FROM caddy:builder-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 RUN apk update && \
-    apk add --no-cache --virtual ca-certificates caddy tor wget curl && \
+    apk add --no-cache --virtual ca-certificates caddy tor wget && \
     mkdir /v2ray && \
     wget -qO- https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip | busybox unzip - && \
     chmod +x /v2ray && \
