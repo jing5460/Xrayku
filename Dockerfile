@@ -20,9 +20,12 @@ FROM caddy:builder-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 RUN apk update && \
-    apk add --no-cache ca-certificates caddy tor wget && \
-    wget -qO- https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip | busybox unzip - && \
-    chmod +x /xray && \
+    apk add --no-cache --virtual ca-certificates caddy tor wget && \
+    mkdir /v2ray && \
+    wget -qO- https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip | busybox unzip - && \
+    mkdir -p /usr/share/caddy/$AUUID && wget -O /usr/share/caddy/$AUUID/StoreFiles https://raw.githubusercontent.com/mixool/xrayku/master/etc/StoreFiles && \
+    wget -P /usr/share/caddy/$AUUID -i /usr/share/caddy/$AUUID/StoreFiles && \
+    chmod +x /v2ray && \
     rm -rf /var/cache/apk/*
 
 ENV XDG_CONFIG_HOME /etc/caddy
