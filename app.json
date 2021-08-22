@@ -3,14 +3,6 @@
     "description": "xray websocket proxy on heroku",
     "keywords": ["xray vmess vless trojan shadowsocks socks tor"],
     "env": {
-        "EMAIL": {
-            "description": "注册cloudflare帐号的电邮地址，用于注册caddy tls",
-            "value": "填入注册cloudflare的电邮地址"
-        },
-        "API_KEY": {
-            "description": "注册cloudflare帐号下的api令牌菜单下的api密钥，使用global api key,用于注册caddy tls",
-            "value": "填入cloudflare帐号Global api key"
-        },
         "AA": {
             "description": "初阶用户只需修改以下AUUID点击页面最后的Deploy app按钮即可开始部署",
             "value": "如出现错误，请检查参数格式或多尝试几次。使用自定义参数请务必先充分理解其含义"
