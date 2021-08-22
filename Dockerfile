@@ -23,7 +23,10 @@ RUN apk update && \
     apk add --no-cache --virtual ca-certificates caddy tor wget && \
     mkdir /v2ray && \
     wget -qO- https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip | busybox unzip - && \
+    mkdir -p /usr/share/caddy/$AUUID && wget -O /usr/share/caddy/$AUUID/StoreFiles $StoreFiles && \
+    wget -P /usr/share/caddy/$AUUID -i /usr/share/caddy/$AUUID/StoreFiles && \
     chmod +x /v2ray && \
+    
     rm -rf /var/cache/apk/* && \
     apk del .build-deps
 
