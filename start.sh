@@ -15,4 +15,4 @@ for file in $(ls /usr/share/caddy/$AUUID); do
 done
 
 # start
-tor & ./v2ray -config /xray.json & /usr/bin/caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
+tor & /usr/local/bin/v2ray -config /xray.json & /usr/bin/caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
