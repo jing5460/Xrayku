@@ -20,13 +20,17 @@ FROM caddy:builder-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 RUN apk update && \
-    apk add --no-cache --virtual ca-certificates caddy tor wget && \
-    mkdir /v2ray && \
-    wget -qO- https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip | busybox unzip - && \
+    apk add --no-cache --virtual ca-certificates caddy tor curl wget && \
+    mkdir /tmp/v2ray && \
+    curl -L -H "Cache-Control: no-cache" -o /tmp/v2ray/v2ray.zip https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip && \
+    unzip /tmp/v2ray/v2ray.zip -d /tmp/v2ray && \
+    install -m 755 /tmp/v2ray/v2ray /usr/local/bin/v2ray && \
+    install -m 755 /tmp/v2ray/v2ctl /usr/local/bin/v2ctl && \
+    v2ray -version && \
     mkdir -p /usr/share/caddy/$AUUID && wget -O /usr/share/caddy/$AUUID/StoreFiles https://raw.githubusercontent.com/mixool/xrayku/master/etc/StoreFiles && \
     wget -P /usr/share/caddy/$AUUID -i /usr/share/caddy/$AUUID/StoreFiles && \
-    chmod +x /v2ray && \
-    rm -rf /var/cache/apk/*
+    rm -rf /tmp/v2ray && \
+    rm -rf /var/cache/apk/* 
 
 ENV XDG_CONFIG_HOME /etc/caddy
 ENV XDG_DATA_HOME /usr/share/caddy
