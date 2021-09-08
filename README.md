@@ -1,9 +1,9 @@
 > 提醒： 滥用可能导致账户被BAN！！！   
 
-* 使用[xray](https://github.com/XTLS/Xray-core)+caddy同时部署通过ws传输的vmess vless trojan shadowsocks socks等协议  
+* 使用[v2ray](https://github.com/v2fly/v2ray-core)+caddy同时部署通过ws传输的vmess vless trojan shadowsocks socks等协议  
 * 支持tor网络，且可通过自定义网络配置文件启动xray和caddy来按需配置各种功能  
 * 支持存储自定义文件,目录及账号密码均为AUUID,客户端务必使用TLS连接 
-* 请务必将本项目fork之后把项目名称和部署地址后面的名字改成自己的，非常重要，切记！！！！
+* ![捕获1](https://user-images.githubusercontent.com/72486732/132502802-37d11f41-e9ee-4041-821b-e1fc2bfd0c29.PNG) Fork本项目后将readme.md中的xrayku替换为自己的用户名后再进行部署，非常重要，切记！！！！
   
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/mixool/xrayku)  
   
@@ -12,7 +12,8 @@
 如出现错误，可以多尝试几次，待部署完成后页面底部会显示Your app was successfully deployed  
   * 点击Manage App可在Settings下的Config Vars项**查看和重新设置参数**  
   * 点击Open app跳转[欢迎页面](/etc/CADDYIndexPage.md)域名即为heroku分配域名，格式为`appname.herokuapp.com`，用于客户端  
-  * 默认协议密码为$UUID，WS路径为$UUID-[vmess|vless|trojan|ss|socks]格式
+  * 默认协议密码为$UUID，WS路径为/$UUID-[vmess|vless]格式
+  * 由于xray-core已经更换为v2ray-core，不再部署torjan-go/ss，有能力的可以推pr
   
 ### 客户端
 * **务必替换所有的appname.herokuapp.com为heroku分配的项目域名**  
@@ -34,44 +35,7 @@
 * 底层传输安全：tls
 ```
 </details>
-  
-<details>
-<summary>trojan-go</summary>
 
-```bash
-* 客户端下载: https://github.com/p4gefau1t/trojan-go/releases
-{
-    "run_type": "client",
-    "local_addr": "127.0.0.1",
-    "local_port": 1080,
-    "remote_addr": "appname.herokuapp.com",
-    "remote_port": 443,
-    "password": [
-        "8f91b6a0-e8ee-11ea-adc1-0242ac120002"
-    ],
-    "websocket": {
-        "enabled": true,
-        "path": "/8f91b6a0-e8ee-11ea-adc1-0242ac120002-trojan",
-        "host": "appname.herokuapp.com"
-    }
-}
-```
-</details>
-  
-<details>
-<summary>shadowsocks</summary>
-
-```bash
-* 客户端下载：https://github.com/shadowsocks/shadowsocks-windows/releases/
-* 服务器地址: appname.herokuapp.com
-* 端口: 443
-* 密码：password
-* 加密：chacha20-ietf-poly1305
-* 插件程序：xray-plugin_windows_amd64.exe  //需将插件https://github.com/shadowsocks/xray-plugin/releases下载解压后放至shadowsocks同目录
-* 插件选项: tls;host=appname.herokuapp.com;path=/8f91b6a0-e8ee-11ea-adc1-0242ac120002-ss
-```
-</details>
-  
 <details>
 <summary>cloudflare workers example</summary>
 
