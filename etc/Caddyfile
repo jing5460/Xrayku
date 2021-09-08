@@ -10,6 +10,7 @@ header {
     X-XSS-Protection "1; mode=block;"
     X-Frame-Options DENY
     Referrer-Policy no-referrer-when-downgrade
+    -Server
 }
 
 basicauth /$AUUID/* {
