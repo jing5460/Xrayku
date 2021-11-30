@@ -3,10 +3,10 @@
 * 使用[v2ray](https://github.com/v2fly/v2ray-core)+caddy同时部署通过ws传输的vmess vless trojan shadowsocks socks等协议  
 * 支持tor网络，且可通过自定义网络配置文件启动xray和caddy来按需配置各种功能  
 * 支持存储自定义文件,目录及账号密码均为AUUID,客户端务必使用TLS连接 
-* ![捕获1](https://user-images.githubusercontent.com/72486732/132502802-37d11f41-e9ee-4041-821b-e1fc2bfd0c29.PNG) Fork本项目后将readme.md中的mixool(jing5460)替换为自己的用户名后再进行部署，非常重要，切记！！！！
+* ![捕获1](https://user-images.githubusercontent.com/72486732/132502802-37d11f41-e9ee-4041-821b-e1fc2bfd0c29.PNG) Fork本项目后将readme.md中的jing5460替换为自己的用户名后再进行部署，非常重要，切记！！！！
 * 部署时出现We couldn't deploy your app because the source code violates the Salesforce Acceptable Use and External-Facing Services Policy提示时请更改项目名后再重新尝试部署。
   
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/jing5460/Foxrayku)  
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/jing5460/Xrayku)  
   
 ### 服务端
 点击上面紫色`Deploy to Heroku`，会跳转到heroku app创建页面，填上app的名字、选择节点、按需修改部分参数和AUUID后点击下面deploy创建app即可开始部署  
